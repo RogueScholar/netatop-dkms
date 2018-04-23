@@ -1,0 +1,10 @@
+#!/bin/bash
+#
+# Generate proper versioning include file
+#
+CURDATE=$(date +%Y\/%m\/%d\ %H:%M:%S)
+
+CURVERS="2"
+
+echo "#define	NETATOPVERSION	\"$CURVERS\""	 > netatopversion.h
+echo "#define	NETATOPDATE	\"$CURDATE\""	>> netatopversion.h
