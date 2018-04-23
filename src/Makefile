@@ -11,7 +11,8 @@ default:
 		netatop.ko:	netatop.c 
 			$(MAKE) -C $(KDIR) M=$(PWD) modules
 
-install:	netatop.ko
+install:
+		netatop.ko
 		install -d /lib/modules/`uname -r`/extra
 		install -m 0644 module/netatop.ko -t /lib/modules/`uname -r`/extra
 		depmod
