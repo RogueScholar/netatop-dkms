@@ -1,0 +1,16 @@
+---
+Bug:
+  Database: "https://github.com/Atoptool/atop/issues"
+  Submit: "https://github.com/Atoptool/atop/issues/new"
+Changelog: "https://github.com/RogueScholar/netatop-dkms/blob/debian/ChangeLog"
+Contact: "Gerlof Langeveld <gerlof.langeveld@atoptool.nl>"
+Documentation: "https://www.atoptool.nl/extras.php"
+Name: "netatop"
+Other:
+  References: "https://www.atoptool.nl/"
+Repository: "https://github.com/RogueScholar/netatop-dkms.git"
+Repository-Browse: "https://github.com/RogueScholar/netatop-dkms"
+Screenshots: "https://www.atoptool.nl/screenshots.php"
+Security:
+  Contact: "Gerlof Langeveld <gerlof.langeveld@atoptool.nl>"
+...

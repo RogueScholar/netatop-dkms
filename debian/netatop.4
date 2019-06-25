@@ -33,7 +33,7 @@ As soon as the
 .I netatop
 module knows to what process or thread the sockinfo struct is related,
 a reference is made from the sockinfo struct to the taskinfo struct
-that represents the proces or thread within the module.
+that represents the process or thread within the module.
 However, the related task can only be determined when a packet is
 transmitted, i.e. the module is called in the context
 of the transmitting process. At such moment the tgid (process) and
@@ -66,7 +66,7 @@ the taskinfo of such finished process. When the taskinfo struct of a
 finished process is not read within 15 seconds, the taskinfo struct
 will be destroyed from the exitlist.
 .br
-The garbage collector can be acivated by issueing a special getsockopt
+The garbage collector can be acivated by issuing a special getsockopt
 call from an analysis program (e.g. atop). Apart from that, a time-based
 garbage collector activation is issued anyhow every 15 seconds.
 .PP

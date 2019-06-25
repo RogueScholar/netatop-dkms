@@ -1,5 +1,5 @@
-netatop-dkms (2.0-1) unstable; urgency=medium
+netatop (2.0-1) unstable; urgency=medium
 
   * Initial Debian packaging release from upstream version 2.0 source code
 
- -- Peter J. Mello <admin@petermello.net>  Mon, 24 Jun 2019 22:48:18 -0700 
+ -- Peter J. Mello <admin@petermello.net>  Mon, 24 Jun 2019 22:48:18 -0700
