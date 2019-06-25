@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #
 # Generate proper versioning include file
 #
@@ -16,5 +16,5 @@ else
 	exit 0	# do not modify
 fi
 
-echo "#define	NETATOPVERSION	\"$CURVERS\""	 > netatopversion.h
-echo "#define	NETATOPDATE	\"$CURDATE\""	>> netatopversion.h
+echo "#define	NETATOPVERSION	\"$CURVERS\""	 > src/netatopversion.h
+echo "#define	NETATOPDATE	\"$CURDATE\""	>> src/netatopversion.h

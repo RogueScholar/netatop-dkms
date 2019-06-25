@@ -2,8 +2,8 @@ Source: netatop
 Maintainer: Peter J. Mello <admin@petermello.net>
 Section: kernel
 Priority: optional
-Build-Depends: debhelper-compat (= 12), dh-modaliases, dkms,
- zlib1-dev | zlib1g-dev 
+Build-Depends: debhelper-compat (= 12), dh-modaliases, dkms
+Build-Depends-Indep: zlib1-dev | zlib1g-dev
 Standards-Version: 4.3.0
 Homepage: https://www.atoptool.nl/netatop.php
 Vcs-Browser: https://github.com/Atoptool/atop
@@ -11,10 +11,11 @@ Vcs-Git: https://github.com/Atoptool/atop.git
 Rules-Requires-Root: no
 
 Package: netatop-dkms
-Architecture: all
+Architecture: linux-any
+Multi-Arch: foreign
 Essential: no
-Depends: atop (>= 2.3.0), dkms, ${misc:Depends}
-Description: Atop network monitoring kernel module
+Depends: atop (>= 2.3.0), dkms, linux-headers, make, ${misc:Depends}
+Description: Atop network monitoring kernel module (DKMS)
  netatop is a module for Linux kernel versions 4.13 and up that can be loaded to
  gather statistics about the TCP and UDP packets that have been
  transmitted/received per process and per thread, accessible through the
@@ -26,3 +27,6 @@ Description: Atop network monitoring kernel module
  about the number of packets sent/received via TCP and UDP, the average sizes of
  these packets, and the total bandwidth consumed for input and output per
  process/thread.
+ .
+ This package contains the source code for the netatop kernel module to be built
+ with DKMS. Kernel sources or headers are required to compile this module.

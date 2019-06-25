@@ -1,31 +1,6 @@
 # Don't accidentally publish your GPG secret keyring
 secring.*
 
-# Java bytecode (compilation artifact)
-*.class
-
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
-
-# Package Files
-*.war
-*.ear
-
-# JVM crash logs (see http://www.java.com/en/download/help/error_hotspot.xml)
-hs_err_pid*
-
-# Maven
-target
-release.properties
-pom.xml.*
-
-# IntelliJ IDEA
-.idea/
-*.iml
-
-# Eclipse
-/bin
-
 # Visual Studio Code
 .vscode/*
 ## All but four files are installation-specific
@@ -65,28 +40,3 @@ bh_unicode_properties.cache
 *.cuda-proj
 
 # Project specific files
-cache
-jspf.cache
-logs
-log
-config.xml
-*.odb
-*.odb$
-*.desktop
-scraper_*.conf
-tmm_ui.prop
-tmm.uuid
-backup
-build
-dist
-movies.db
-tvshows.db
-/tmm.uuid.disable
-/tmm.lic
-/ignore/
-/plugins/
-/config/
-/data/
-/tmp/
-/templates/*.jar
-

@@ -1,10 +1,39 @@
 #!/usr/bin/make -f
 
-export DH_VERBOSE = 1
-
+DH_VERBOSE = 1
+DEB_BUILD_MAINT_OPTIONS = future=+lfs hardening=+all reproducible=+fixfilepath
 LC_ALL := C.UTF-8
-export LC_ALL 
+export DH_VERBOSE DEB_BUILD_MAINT_OPTIONS LC_ALL
+DPKG_EXPORT_BUILDFLAGS = 1
+include /usr/share/dpkg/default.mk
+include /usr/share/dpkg/pkg-info.mk
+
+PACKAGE_NAME = $(shell grep PACKAGE_NAME= src/dkms.conf | cut -d= -f2 | cut -d\" -f2)
+PACKAGE_VERSION = $(DEB_VERSION_UPSTREAM)
+PACKAGE_DATE = $(shell grep -o -m 1 -P "\w+\s\d+\s\d+:\d+:\d+\s\d+\s\+\d+" ChangeLog | sed -r 's/(...) (..) (..:..:..) (....) (.....)/\1 \2 \4 \3 \5/' | xargs -I{} date -d {} -u +%Y\/%m\/%d\ %H:%M:%S)
+export PACKAGE_NAME PACKAGE_VERSION PACKAGE_DATE
 
 
 %:
-		dh $@
+		dh $@ --with dkms
+
+override_dh_auto_configure:
+		echo "#define NETATOPVERSION \"$(PACKAGE_VERSION)\"" \
+				>src/netatopversion.h
+		echo "#define NETATOPDATE \"$(PACKAGE_DATE)\"" >>src/netatopversion.h
+override_dh_auto_clean:
+		rm -f src/dkms.conf src/netatopversion.h
+override_dh_auto_build:
+		sed -e "s|#PACKAGE_VERSION#|$(PACKAGE_VERSION)|" \
+				src/dkms.conf.in > src/dkms.conf
+override_dh_auto_install:
+		dh_installdirs -p$(PACKAGE_NAME)-dkms \
+				usr/src/$(PACKAGE_NAME)-$(PACKAGE_VERSION)
+		dh_install -p$(PACKAGE_NAME)-dkms \
+				src/Makefile usr/src/$(PACKAGE_NAME)-$(PACKAGE_VERSION)
+		dh_install -p$(PACKAGE_NAME)-dkms \
+				src/netatop.* usr/src/$(PACKAGE_NAME)-$(PACKAGE_VERSION)
+		dh_install -p$(PACKAGE_NAME)-dkms \
+				src/netatopversion.h usr/src/$(PACKAGE_NAME)-$(PACKAGE_VERSION)
+override_dh_dkms:
+		dh_dkms -p $(PACKAGE_NAME)-dkms -V $(PACKAGE_VERSION) -- src/dkms.conf
