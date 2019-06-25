@@ -18,4 +18,4 @@ More information can be found on the [atop website][1].
 
 [1]: https://www.atoptool.nl/netatop.php
 [2]: https://www.atoptool.nl/download/netatop-2.0.tar.gz
-[3]: http://linux.dell.com/dkms
+[3]: https://github.com/dell/dkms
